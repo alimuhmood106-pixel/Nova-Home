@@ -129,20 +129,12 @@ export function useParallax<T extends HTMLElement>(speed = 0.1) {
   return ref;
 }
 
-export function SectionHead({ eyebrow, title, index }: { eyebrow: string; title: string; index: string }) {
+export function SectionHead({ title }: { title: string }) {
   return (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)] items-end gap-6 border-b border-border pb-8 md:gap-12">
-      <Reveal className="font-serif text-6xl leading-none text-secondary md:text-8xl" as="span">
-        {index}
+    <div className="border-b border-border pb-6">
+      <Reveal as="h2" className="font-serif text-4xl uppercase leading-tight md:text-6xl">
+        {title}
       </Reveal>
-      <div className="min-w-0">
-        <Reveal as="p" className="eyebrow text-muted-foreground">
-          {eyebrow}
-        </Reveal>
-        <Reveal as="h2" delay={100} className="mt-3 font-serif text-4xl leading-tight md:text-6xl">
-          {title}
-        </Reveal>
-      </div>
     </div>
   );
 }

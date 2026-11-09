@@ -21,29 +21,21 @@ export function Hero() {
       </div>
       <div className="hero-overlay absolute inset-0" />
       <div key={lang} className="relative mx-auto w-full max-w-[1440px] px-5 pb-16 pt-32 md:px-10 md:pb-24">
-        <p className="eyebrow reveal is-in text-on-dark/80" style={{ "--d": "1700ms" } as React.CSSProperties}>
-          {t.hero.eyebrow}
-        </p>
-        <h1 className="mt-6 max-w-4xl font-serif text-[clamp(2.6rem,7.5vw,6.5rem)] font-light leading-[1.02]">
+        <h1 className="max-w-4xl font-serif text-[clamp(2.4rem,6.5vw,5.5rem)] uppercase leading-[1.05]">
           {t.hero.lines.map((l, i) => (
             <span key={i} className="line-mask">
               <span style={{ "--d": `${1800 + i * 140}ms` } as React.CSSProperties}>{l}</span>
             </span>
           ))}
         </h1>
-        <div className="mt-10 grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
-          <p className="reveal is-in max-w-md text-base text-on-dark/80 md:text-lg" style={{ "--d": "2300ms" } as React.CSSProperties}>
-            {t.hero.sub}
-          </p>
-          <div className="reveal is-in flex flex-wrap gap-3" style={{ "--d": "2450ms" } as React.CSSProperties}>
-            <a href="#projects" className="group inline-flex items-center gap-3 bg-on-dark px-7 py-4 text-xs uppercase tracking-[0.16em] text-ink transition-colors duration-300 hover:bg-brass">
-              {t.hero.ctaProjects}
-              <Icons.Arrow className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-            </a>
-            <a href="#contact" className="inline-flex items-center border border-on-dark/50 px-7 py-4 text-xs uppercase tracking-[0.16em] transition-colors duration-300 hover:bg-on-dark hover:text-ink">
-              {t.hero.ctaContact}
-            </a>
-          </div>
+        <div className="reveal is-in mt-10 flex flex-wrap gap-3" style={{ "--d": "2300ms" } as React.CSSProperties}>
+          <a href="#projects" className="group inline-flex items-center gap-3 bg-on-dark px-7 py-4 text-xs uppercase tracking-[0.16em] text-ink transition-colors duration-300 hover:bg-brass">
+            {t.hero.ctaProjects}
+            <Icons.Arrow className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+          </a>
+          <a href="#contact" className="inline-flex items-center border border-on-dark/50 px-7 py-4 text-xs uppercase tracking-[0.16em] transition-colors duration-300 hover:bg-on-dark hover:text-ink">
+            {t.hero.ctaContact}
+          </a>
         </div>
       </div>
     </section>
@@ -55,19 +47,14 @@ export function About() {
   const a = useParallax<HTMLDivElement>(0.05);
   const b = useParallax<HTMLDivElement>(0.14);
   return (
-    <section id="about" className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-40">
-      <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-5 lg:pt-16">
-          <Reveal as="p" className="eyebrow text-muted-foreground">{t.about.eyebrow}</Reveal>
-          <Reveal as="h2" delay={100} className="mt-6 font-serif text-4xl leading-[1.08] md:text-6xl">{t.about.title}</Reveal>
-          {t.about.body.map((p, i) => (
-            <Reveal as="p" key={i} delay={200 + i * 100} className="mt-6 max-w-md leading-relaxed text-muted-foreground">{p}</Reveal>
-          ))}
-          <ul className="mt-12 border-t border-border">
+    <section id="about" className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-32">
+      <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-5">
+          <Reveal as="h2" className="font-serif text-4xl uppercase leading-[1.1] md:text-6xl">{t.about.title}</Reveal>
+          <ul className="mt-10 flex flex-wrap gap-3">
             {t.about.facts.map((f, i) => (
-              <Reveal as="li" key={f} delay={300 + i * 100} className="flex items-baseline gap-6 border-b border-border py-4">
-                <span className="text-xs text-accent">0{i + 1}</span>
-                <span className="font-serif text-2xl">{f}</span>
+              <Reveal as="li" key={f} delay={150 + i * 100} className="border border-primary/30 px-5 py-2.5 text-xs uppercase tracking-[0.16em] text-primary">
+                {f}
               </Reveal>
             ))}
           </ul>
@@ -91,56 +78,20 @@ export function About() {
 
 export function Services() {
   const { t } = useI18n();
-  const [active, setActive] = useState(0);
   return (
-    <section id="services" className="bg-card py-24 md:py-40">
+    <section id="services" className="bg-card py-20 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 md:px-10">
-        <SectionHead index="01" eyebrow={t.services.eyebrow} title={t.services.title} />
-        <div className="mt-4 grid gap-12 lg:grid-cols-12">
-          <ul className="lg:col-span-7" onMouseLeave={() => undefined}>
-            {t.services.items.map((s, i) => (
-              <Reveal as="li" key={i} delay={i * 70}>
-                <button
-                  type="button"
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  className="group grid w-full grid-cols-[2.5rem_minmax(0,1fr)_auto] items-baseline gap-4 border-b border-border py-7 text-start md:grid-cols-[4rem_minmax(0,1fr)_auto]"
-                >
-                  <span className={cn("text-xs transition-colors duration-500", active === i ? "text-brass" : "text-muted-foreground")}>0{i + 1}</span>
-                  <span className="min-w-0">
-                    <span className={cn("block font-serif text-3xl transition-transform duration-500 md:text-4xl", active === i ? "translate-x-2 rtl:-translate-x-2 text-primary" : "")}>
-                      {s.t}
-                    </span>
-                    <span className={cn("mt-2 block max-w-md text-sm text-muted-foreground transition-opacity duration-500", active === i ? "opacity-100" : "opacity-60")}>{s.d}</span>
-                  </span>
-                  <Icons.Arrow className={cn("h-5 w-5 transition-[opacity,transform] duration-500", active === i ? "opacity-100" : "-translate-x-2 opacity-0 rtl:translate-x-2")} />
-                </button>
-                <div className="mt-4 aspect-[16/10] overflow-hidden lg:hidden" hidden={active !== i}>
-                  <Img src={serviceImages[i]} w={828} h={600} alt={s.t} />
-                </div>
-              </Reveal>
-            ))}
-          </ul>
-          <div className="hidden lg:col-span-5 lg:block">
-            <div className="sticky top-28 aspect-[4/5] overflow-hidden bg-muted">
-              {serviceImages.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={i === active ? t.services.items[i].t : ""}
-                  width={828}
-                  height={1023}
-                  loading="lazy"
-                  className={cn(
-                    "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[900ms]",
-                    i === active ? "scale-100 opacity-100" : "scale-105 opacity-0",
-                  )}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <SectionHead title={t.services.title} />
+        <ul className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+          {t.services.items.map((s, i) => (
+            <Reveal as="li" key={i} delay={(i % 3) * 90} className="group relative aspect-[4/5] overflow-hidden bg-muted">
+              <Img src={serviceImages[i]} w={828} h={1023} alt={s.t} className="transition-transform duration-[1400ms] ease-out group-hover:scale-105" />
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-4 pt-16 font-serif text-sm uppercase text-on-dark md:p-6 md:text-lg">
+                {s.t}
+              </span>
+            </Reveal>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -155,8 +106,8 @@ export function Projects() {
   const list = projects.filter((p) => filter === "all" || p.cat === (filter as Category));
 
   return (
-    <section id="projects" className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-40">
-      <SectionHead index="02" eyebrow={t.projects.eyebrow} title={t.projects.title} />
+    <section id="projects" className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-32">
+      <SectionHead title={t.projects.title} />
       <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm" role="tablist">
         {filters.map((f) => (
           <button
@@ -267,59 +218,6 @@ function Lightbox({ items, index, onIndex, onClose }: { items: typeof projects; 
   );
 }
 
-export function Process() {
-  const { t } = useI18n();
-  const wrap = useRef<HTMLDivElement>(null);
-  const line = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const w = wrap.current, l = line.current;
-    if (!w || !l) return;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      l.style.transform = "scaleY(1)";
-      return;
-    }
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const r = w.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (innerHeight * 0.7 - r.top) / r.height));
-      l.style.transform = `scaleY(${p.toFixed(3)})`;
-    };
-    const on = () => { if (!raf) raf = requestAnimationFrame(update); };
-    update();
-    addEventListener("scroll", on, { passive: true });
-    return () => { removeEventListener("scroll", on); cancelAnimationFrame(raf); };
-  }, []);
-  return (
-    <section className="bg-primary py-24 text-primary-foreground md:py-40">
-      <div className="mx-auto grid max-w-[1440px] gap-16 px-5 md:px-10 lg:grid-cols-12">
-        <div className="lg:col-span-4">
-          <div className="lg:sticky lg:top-32">
-            <Reveal as="p" className="eyebrow text-primary-foreground/70">{t.process.eyebrow}</Reveal>
-            <Reveal as="h2" delay={100} className="mt-4 font-serif text-5xl md:text-7xl">{t.process.title}</Reveal>
-          </div>
-        </div>
-        <div ref={wrap} className="relative lg:col-span-7 lg:col-start-6">
-          <div className="absolute inset-y-0 start-[11px] w-px bg-primary-foreground/15" />
-          <div ref={line} className="absolute inset-y-0 start-[11px] w-px origin-top bg-brass" style={{ transform: "scaleY(0)" }} />
-          <ol>
-            {t.process.steps.map((s, i) => (
-              <li key={i} className="relative grid grid-cols-[1.5rem_minmax(0,1fr)] gap-8 pb-20 last:pb-0">
-                <span className="relative z-10 mt-3 h-[23px] w-[23px] rounded-full border border-brass bg-primary" />
-                <Reveal delay={80}>
-                  <span className="font-serif text-6xl text-primary-foreground/25 md:text-7xl">0{i + 1}</span>
-                  <h3 className="mt-2 font-serif text-3xl md:text-4xl">{s.t}</h3>
-                  <p className="mt-3 max-w-md text-primary-foreground/70">{s.d}</p>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function Contact() {
   const { t } = useI18n();
   const f = t.contact.form;
@@ -341,9 +239,9 @@ export function Contact() {
   const set = (k: keyof typeof vals) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setVals({ ...vals, [k]: e.target.value });
 
   return (
-    <section id="contact" className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-40">
-      <SectionHead index="03" eyebrow={t.contact.eyebrow} title={t.contact.title} />
-      <div className="mt-16 grid gap-16 lg:grid-cols-12">
+    <section id="contact" className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-32">
+      <SectionHead title={t.contact.title} />
+      <div className="mt-12 grid gap-16 lg:grid-cols-12">
         <div className="space-y-10 lg:col-span-5">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{t.contact.phones}</p>
@@ -359,8 +257,8 @@ export function Contact() {
             <a href={contact.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="flex h-[52px] w-[52px] items-center justify-center border border-border transition-colors hover:border-brass hover:text-accent"><Icons.Facebook className="h-5 w-5" /></a>
           </Reveal>
           <Reveal delay={150}>
-            <div className="aspect-[4/3] overflow-hidden border border-border bg-muted">
-              <iframe title="Nova Home map" src={contact.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-full w-full grayscale-[40%]" />
+            <div className="aspect-[4/3] overflow-hidden border-2 border-accent/40 bg-muted shadow-lg">
+              <iframe title="Nova Home map" src={contact.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-full w-full saturate-[1.8] contrast-[1.08] brightness-[1.03]" />
             </div>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
               <span className="text-muted-foreground">{t.contact.location}</span>
@@ -419,7 +317,6 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 md:grid-cols-12 md:px-10">
         <div className="md:col-span-5">
           <FooterLogo />
-          <p className="mt-6 max-w-xs text-sm text-on-dark/60">{t.hero.sub}</p>
         </div>
         <div className="md:col-span-3">
           <p className="text-xs uppercase tracking-[0.2em] text-brass">{t.footer.links}</p>
