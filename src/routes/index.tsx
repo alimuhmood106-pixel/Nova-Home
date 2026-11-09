@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { I18nProvider } from "@/components/site/i18n";
 import { Monogram } from "@/components/site/primitives";
-import { About, Contact, Footer, Hero, Projects, Services } from "@/components/site/Sections";
+import { About, Contact, Footer, Hero, Process, Projects, Services } from "@/components/site/Sections";
 
 const title = "Nova Home | Interior Design & Custom Joinery in Sulaymaniyah";
 const description =
@@ -31,9 +31,10 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <Projects />
-        <Services />
         <About />
+        <Services />
+        <Projects />
+        <Process />
         <Contact />
       </main>
       <Footer />
