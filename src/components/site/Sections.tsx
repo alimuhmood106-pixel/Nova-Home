@@ -360,7 +360,7 @@ export function Contact() {
           </Reveal>
           <Reveal delay={150}>
             <div className="aspect-[4/3] overflow-hidden border border-border bg-muted">
-              <iframe title="Nova Home map" src={contact.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-full w-full grayscale-[40%]" />
+              <iframe title="Nova Home map" src={contact.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-full w-full saturate-[1.2]" />
             </div>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
               <span className="text-muted-foreground">{t.contact.location}</span>

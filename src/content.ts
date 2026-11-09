@@ -1,12 +1,13 @@
 // All site copy and images live here. Edit text or swap images in this one file.
-import livingRoom from "@/assets/living-room.webp.asset.json";
-import tvWall from "@/assets/tv-wall-walnut.webp.asset.json";
-import kitchen from "@/assets/kitchen-pantry.webp.asset.json";
-import bedroomWardrobe from "@/assets/bedroom-wardrobe.webp.asset.json";
-import vanity from "@/assets/vanity-mirror.webp.asset.json";
-import entry from "@/assets/entry-wardrobe.webp.asset.json";
-import kids from "@/assets/kids-study.webp.asset.json";
-import twin from "@/assets/twin-bedroom.webp.asset.json";
+// Real files live in /public/images so any host (Cloudflare Pages) serves them.
+const livingRoom = { url: "/images/living-room.webp" };
+const tvWall = { url: "/images/tv-wall-walnut.webp" };
+const kitchen = { url: "/images/kitchen-pantry.webp" };
+const bedroomWardrobe = { url: "/images/bedroom-wardrobe.webp" };
+const vanity = { url: "/images/vanity-mirror.webp" };
+const entry = { url: "/images/entry-wardrobe.webp" };
+const kids = { url: "/images/kids-study.webp" };
+const twin = { url: "/images/twin-bedroom.webp" };
 
 export type Lang = "en" | "ckb" | "ar";
 export type Category = "kitchens" | "bedrooms" | "living" | "kids";
@@ -35,7 +36,7 @@ export const projects: { src: string; w: number; h: number; cat: Category; key: 
   { key: "kitchen", src: kitchen.url, w: 828, h: 1022, cat: "kitchens" },
   { key: "kids", src: kids.url, w: 828, h: 543, cat: "kids" },
   { key: "wardrobe", src: bedroomWardrobe.url, w: 828, h: 1023, cat: "bedrooms" },
-  { key: "entry", src: entry.url, w: 828, h: 982, cat: "living" },
+  { key: "entry", src: entry.url, w: 828, h: 1031, cat: "living" },
   { key: "twin", src: twin.url, w: 828, h: 543, cat: "bedrooms" },
   { key: "vanity", src: vanity.url, w: 828, h: 1021, cat: "bedrooms" },
 ];
@@ -59,7 +60,6 @@ const en = {
     title: "One team, from the first sketch to the last hinge.",
     body: [
       "Nova Home designs, builds and installs interiors for homes across Sulaymaniyah. We draw the room, make the joinery in our own workshop, and fit it on site.",
-      "Warm wood, quiet colours, hidden light and careful details. Rooms that stay calm for years, not trends that fade in a season.",
     ],
     facts: ["Kitchens", "Wardrobes", "Living Spaces"],
   },
@@ -149,7 +149,6 @@ const ckb: Dict = {
     title: "یەک تیم، لە یەکەم ڕەسمەوە تا دوایین وردەکاری.",
     body: [
       "نۆڤا هۆم ناوخۆی ماڵان لە سلێمانی دیزاین و دروست و دامەزراندن دەکات. ژوورەکە دەکێشین، کارە دارییەکان لە کارگەی خۆمان دروست دەکەین و لە شوێنی خۆی دایدەمەزرێنین.",
-      "داری گەرم، ڕەنگی هێمن، ڕووناکی شاراوە و وردەکاری بە ئاگاداری. ژوورێک کە بۆ ساڵانێک ئارام دەمێنێتەوە.",
     ],
     facts: ["چێشتخانە", "کەنتۆر", "هۆڵ و ژووری دانیشتن"],
   },
@@ -228,7 +227,6 @@ const ar: Dict = {
     title: "فريق واحد، من أول رسم إلى آخر مفصّلة.",
     body: [
       "تصمّم نوفا هوم وتنفّذ وتركّب التصاميم الداخلية للمنازل في السليمانية. نرسم الغرفة، ونصنع أعمال النجارة في ورشتنا، ونركّبها في الموقع.",
-      "خشب دافئ، ألوان هادئة، إضاءة مخفية وتفاصيل مدروسة. غرف تبقى هادئة لسنوات.",
     ],
     facts: ["مطابخ", "خزائن", "مساحات معيشة"],
   },
